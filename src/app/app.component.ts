@@ -8,24 +8,30 @@ import { QueryBuilderConfig } from 'angular2-query-builder';
 })
 export class AppComponent {
   title = 'QueryBuilderDemo';
-  query = {
-    condition: 'and',
-    rules: [
-      {field: 'age', operator: '<=', value: 'Bob'},
-      {field: 'gender', operator: '>=', value: 'm'}
-    ]
-  };
+  query = { 
+    "condition": "or", 
+    "rules": [ 
+      { "field": "targetStatusSecondary", "operator": "=", "value": "1" }, 
+      { "field": "targetStatusSecondary", "operator": "=", "value": "2" }, { "condition": "and", "rules": [ { "field": "updateFieldName", "operator": "=", "value": "1" } ] } ] };
   //query2= "{condition: 'and',rules: [{field: 'age', operator: '<=', value: 'Bob'}, {field: 'gender', operator: '>=', value: 'm'}]}";
   
   config: QueryBuilderConfig = {
     fields: {
-      age: {name: 'Age', type: 'number'},
-      gender: {
-        name: 'Gender',
+
+      targetStatusSecondary: {
+        name: 'TargetStatusSecondary', 
         type: 'category',
         options: [
-          {name: 'Male', value: 'm'},
-          {name: 'Female', value: 'f'}
+          {name: 'QO Approved', value: '1'},
+          {name: 'Client Approved', value: '2'}
+        ]
+      },
+      updateFieldName: {
+        name: 'UpdateFieldName',
+        type: 'category',
+        options: [
+          {name: 'ClientCOBUpdated', value: '1'},
+          {name: 'ClientCOB', value: '2'}
         ]
       }
     }
